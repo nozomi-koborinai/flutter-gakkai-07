@@ -1,0 +1,40 @@
+---
+model: vertexai/imagen3
+config:
+  temperature: 0.7
+  sampleCount: 1
+input:
+  schema:
+    characterName: string
+    age: number
+    gender: string
+    personality: string
+    story: string
+output:
+  format: media
+---
+
+Generate a high-quality anime-style character illustration with the following details:
+
+Character description:
+A {{age}} year old {{gender}} named {{characterName}}. 
+Personality: {{personality}}
+Background story: {{story}}
+
+Style specifications:
+- Anime art style
+- Bust-up portrait composition
+- High-quality rendering
+- Clear facial expression reflecting personality
+- Soft gradient background
+- Vibrant colors
+- Clean line art
+- Detailed features
+- Professional lighting and shading
+- 1024x1024 resolution
+
+Additional notes:
+- Ensure character's personality is reflected in pose and expression
+- Keep the style consistent with modern anime aesthetics
+- Focus on facial features and upper body
+- Use soft, natural lighting
