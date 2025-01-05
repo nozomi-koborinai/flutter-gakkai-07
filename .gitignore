@@ -46,6 +46,7 @@ app.*.map.json
 
 # tools
 .vscode
+.env
 .firebaserc
 firebase.json
 lib/firebase_options.dart
