@@ -1,0 +1,33 @@
+---
+model: googleai/gemini-2.0-flash-exp
+config:
+  temperature: 1.0
+input:
+  schema:
+    characterName: string
+    age: number
+    gender: string
+    personality: string
+    story: string
+output:
+  format: json
+  schema:
+    description: string
+---
+
+以下の情報を元に、キャラクターの説明文を 300 字以内で生成してください。
+説明文は、そのキャラクターの特徴や背景がよく分かる、魅力的な文章にしてください。
+
+キャラクター情報：
+- 名前：{{characterName}}
+- 年齢：{{age}}歳
+- 性別：{{gender}}
+- 性格：{{personality}}
+- 背景：{{story}}
+
+制約条件：
+- 300 字以内で簡潔に
+- キャラクターの個性が伝わる表現を使用
+- 性格と背景を自然に組み込む
+- 読み手の興味を引く文体で
+- 具体的なエピソードを1つ以上含める

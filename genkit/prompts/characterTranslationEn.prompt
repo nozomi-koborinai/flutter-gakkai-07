@@ -1,0 +1,39 @@
+---
+model: googleai/gemini-2.0-flash-exp
+config:
+  temperature: 1.0
+input:
+  schema:
+    characterName: string
+    age: number
+    gender: string
+    personality: string
+    story: string
+output:
+  format: json
+  schema:
+    characterName: string
+    age: number
+    gender: string
+    personality: string
+    story: string
+---
+
+Please translate each field of the character information from Japanese to English.
+Maintain the original meaning while ensuring natural English expression.
+
+Input fields to translate:
+- Character Name: {{characterName}}
+- Gender: {{gender}}
+- Personality: {{personality}}
+- Background Story: {{story}}
+
+Translation guidelines:
+- Keep character names appropriate for the context
+- Use natural English expressions for personality traits
+- Maintain the tone and style of the background story
+- Preserve any cultural elements when appropriate
+- Ensure consistency across all translated fields
+
+Note: The age field should remain as a number without translation.
+Please provide accurate and natural English translations while preserving the character's essence.
