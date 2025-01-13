@@ -47,10 +47,7 @@ app.*.map.json
 # tools
 .vscode
 .env
-.firebaserc
-firebase.json
 lib/firebase_options.dart
 genkit/node_modules
-genkit/.firebaserc
 genkit/.genkit
 genkit/lib
