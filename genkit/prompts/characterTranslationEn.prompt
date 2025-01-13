@@ -2,6 +2,7 @@
 model: googleai/gemini-2.0-flash-exp
 config:
   temperature: 1.0
+  sampleCount: 1
 input:
   schema:
     characterName: string
