@@ -5,6 +5,8 @@ on:
     types:
       - opened
       - synchronize
+    paths-ignore:
+      - "genkit/**"
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
