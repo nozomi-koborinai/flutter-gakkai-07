@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gakkai_07/character_result_page.dart';
+import 'package:flutter_gakkai_07/ui/character_result_page.dart';
 import 'package:flutter_gakkai_07/data/app_exception.dart';
-import 'package:flutter_gakkai_07/ui/failure_snackbar.dart';
+import 'package:flutter_gakkai_07/ui/components/failure_snackbar.dart';
 import 'package:flutter_gakkai_07/usecase/generate_%20character_usecase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

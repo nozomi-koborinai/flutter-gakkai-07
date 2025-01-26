@@ -4,9 +4,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gakkai_07/data/env.dart';
 import 'package:flutter_gakkai_07/data/providers.dart';
 import 'package:flutter_gakkai_07/firebase_options.dart';
-import 'package:flutter_gakkai_07/ui/overlay_loading.dart';
+import 'package:flutter_gakkai_07/ui/components/overlay_loading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'character_input_page.dart';
+import 'ui/character_input_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
