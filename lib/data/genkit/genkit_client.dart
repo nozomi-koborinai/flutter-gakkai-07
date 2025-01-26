@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_gakkai_07/data/app_exception.dart';
-import 'package:flutter_gakkai_07/data/genkit_response.dart';
+import 'package:flutter_gakkai_07/data/genkit/genkit_response.dart';
 
 class GenkitClient {
   GenkitClient({
@@ -50,4 +49,14 @@ class GenkitClient {
 
   final errorMessage = '''Imagen3 による画像生成に失敗しました。
 再度、キャラクター生成をお試しください。''';
+}
+
+class AppException implements Exception {
+  final String message;
+  const AppException([this.message = 'エラーが発生しました']);
+
+  @override
+  String toString() {
+    return message;
+  }
 }
