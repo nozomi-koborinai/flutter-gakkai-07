@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gakkai_07/data/auth_repository.dart';
-import 'package:flutter_gakkai_07/data/env.dart';
-import 'package:flutter_gakkai_07/data/genkit_client.dart';
+import 'package:flutter_gakkai_07/data/auth/auth_repository.dart';
+import 'package:flutter_gakkai_07/data/env/env.dart';
+import 'package:flutter_gakkai_07/data/genkit/genkit_client.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final envProvider = Provider<Env>(
