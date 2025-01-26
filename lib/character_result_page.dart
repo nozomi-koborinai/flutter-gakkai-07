@@ -12,62 +12,83 @@ class CharacterResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('生成されたキャラクター'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          '生成されたキャラクター',
+          style: textTheme.titleLarge?.copyWith(
+            color: colorScheme.primary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  height: 300,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.memory(
-                      Uri.parse(image).data!.contentAsBytes(),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'AI生成された説明:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(description),
-              const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.share),
-                    label: const Text('SNSで共有'),
-                    onPressed: () {
-                      // TODO: SNS共有機能を実装
-                    },
-                  ),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.cloud_upload),
-                    label: const Text('ストレージに保存'),
-                    onPressed: () {
-                      // TODO: ストレージアップロード機能を実装
-                    },
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(24.0),
+            child: Container(
+              height: 300,
+              width: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.1),
+                    spreadRadius: 0,
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
-            ],
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.memory(
+                  Uri.parse(image).data!.contentAsBytes(),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '生成された説明',
+                  style: textTheme.titleMedium?.copyWith(
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: BorderSide(
+                      color: colorScheme.outline.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      description,
+                      style: textTheme.bodyLarge?.copyWith(
+                        height: 1.6,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

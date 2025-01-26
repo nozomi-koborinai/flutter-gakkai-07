@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_gakkai_07/data/app_exception.dart';
 import 'package:flutter_gakkai_07/data/genkit_response.dart';
 
 class GenkitClient {
@@ -38,12 +39,15 @@ class GenkitClient {
       );
 
       if (response.statusCode != 200) {
-        throw Exception('Failed to generate image: ${response.statusCode}');
+        throw AppException(errorMessage);
       }
 
       return GenkitResponse.fromJson(response.data);
-    } on DioException catch (e) {
-      throw Exception('Failed to generate image: ${e.message}');
+    } catch (e) {
+      throw AppException(errorMessage);
     }
   }
+
+  final errorMessage = '''Imagen3 による画像生成に失敗しました。
+再度、キャラクター生成をお試しください。''';
 }

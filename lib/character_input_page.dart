@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gakkai_07/character_result_page.dart';
+import 'package:flutter_gakkai_07/data/app_exception.dart';
+import 'package:flutter_gakkai_07/ui/failure_snackbar.dart';
 import 'package:flutter_gakkai_07/usecase/generate_%20character_usecase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,11 +14,21 @@ class CharacterInputPage extends ConsumerStatefulWidget {
 
 class _CharacterInputPageState extends ConsumerState<CharacterInputPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController(text: 'cat');
-  final _personalityController = TextEditingController(text: '猫の見た目');
-  final _storyController = TextEditingController(text: '道で拾われた');
-  double _age = 25;
-  String _gender = '未選択';
+  final _nameController = TextEditingController(text: 'フラッター');
+  final _personalityController = TextEditingController(
+    text: '''好奇心旺盛で新しい技術を学ぶことが大好き。
+困っている開発者を見かけると放っておけない優しい性格''',
+  );
+  final _storyController = TextEditingController(
+    text: '''スマートフォンアプリ開発の世界で生まれ育った若きエンジニア。
+クロスプラットフォーム開発の可能性に魅了され、世界中の開発者たちと知識を共有しながら成長を続けている。
+休日は技術書を読んだり、コミュニティイベントに参加したりして過ごしている。''',
+  );
+  int _age = 23;
+  String _gender = '女性';
+
+  // 年齢選択肢の生成
+  final List<int> _ageList = List.generate(100, (index) => index + 1);
 
   @override
   void dispose() {
@@ -54,14 +66,19 @@ class _CharacterInputPageState extends ConsumerState<CharacterInputPage> {
                   },
                 ),
                 const SizedBox(height: 16),
-                Text('年齢: ${_age.round()}歳'),
-                Slider(
+                DropdownButtonFormField<int>(
                   value: _age,
-                  min: 1,
-                  max: 100,
-                  divisions: 99,
-                  label: _age.round().toString(),
-                  onChanged: (value) => setState(() => _age = value),
+                  decoration: const InputDecoration(
+                    labelText: '年齢',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: _ageList
+                      .map((age) => DropdownMenuItem(
+                            value: age,
+                            child: Text('$age歳'),
+                          ))
+                      .toList(),
+                  onChanged: (value) => setState(() => _age = value!),
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
@@ -113,24 +130,32 @@ class _CharacterInputPageState extends ConsumerState<CharacterInputPage> {
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      final generatedCharacter =
-                          await ref.read(generateImageUsecaseProvider).invoke(
-                                characterName: _nameController.text,
-                                age: _age.round(),
-                                gender: _gender,
-                                personality: _personalityController.text,
-                                story: _storyController.text,
-                              );
-                      if (!mounted) return;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CharacterResultPage(
-                            description: generatedCharacter.description,
-                            image: generatedCharacter.image,
+                      final scaffoldMessenger = ScaffoldMessenger.of(context);
+                      final navigator = Navigator.of(context);
+                      try {
+                        final generatedCharacter =
+                            await ref.read(generateImageUsecaseProvider).invoke(
+                                  characterName: _nameController.text,
+                                  age: _age,
+                                  gender: _gender,
+                                  personality: _personalityController.text,
+                                  story: _storyController.text,
+                                );
+                        if (!mounted) return;
+                        navigator.push(
+                          MaterialPageRoute(
+                            builder: (context) => CharacterResultPage(
+                              description: generatedCharacter.description,
+                              image: generatedCharacter.image,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      } on AppException catch (e) {
+                        FailureSnackBar.show(
+                          scaffoldMessenger,
+                          message: e.toString(),
+                        );
+                      }
                     }
                   },
                   child: const Text('キャラクターを生成'),
