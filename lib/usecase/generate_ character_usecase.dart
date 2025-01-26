@@ -1,5 +1,5 @@
-import 'package:flutter_gakkai_07/data/genkit_response.dart';
-import 'package:flutter_gakkai_07/data/providers.dart';
+import 'package:flutter_gakkai_07/data/genkit/genkit_response.dart';
+import 'package:flutter_gakkai_07/providers.dart';
 import 'package:flutter_gakkai_07/ui/components/overlay_loading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
