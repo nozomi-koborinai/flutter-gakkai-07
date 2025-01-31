@@ -16,11 +16,10 @@ class _CharacterInputPageState extends ConsumerState<CharacterInputPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController(text: 'ペンペン');
   final _personalityController = TextEditingController(
-    text: '好奇心旺盛で、仲間思い。寒さに強く、泳ぎが得意。少し臆病だけど、仲間と一緒なら勇気を出せる。',
+    text: '好奇心旺盛で、仲間思い。',
   );
   final _storyController = TextEditingController(
-    text:
-        '南極の小さなコロニーで暮らすペンギン。毎日、仲間と一緒に魚を探して泳いだり遊んだりして過ごしている。将来は、もっと遠くの海まで探検してみたい。',
+    text: '南極の小さなコロニーで暮らすペンギン。',
   );
   int _age = 3;
   String _gender = '未選択';
