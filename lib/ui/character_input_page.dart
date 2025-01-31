@@ -14,18 +14,15 @@ class CharacterInputPage extends ConsumerStatefulWidget {
 
 class _CharacterInputPageState extends ConsumerState<CharacterInputPage> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController(text: 'フラッター');
+  final _nameController = TextEditingController(text: 'ペンペン');
   final _personalityController = TextEditingController(
-    text: '''好奇心旺盛で新しい技術を学ぶことが大好き。
-困っている開発者を見かけると放っておけない優しい性格''',
+    text: '好奇心旺盛で、仲間思い。',
   );
   final _storyController = TextEditingController(
-    text: '''スマートフォンアプリ開発の世界で生まれ育った若きエンジニア。
-クロスプラットフォーム開発の可能性に魅了され、世界中の開発者たちと知識を共有しながら成長を続けている。
-休日は技術書を読んだり、コミュニティイベントに参加したりして過ごしている。''',
+    text: '南極の小さなコロニーで暮らすペンギン。',
   );
-  int _age = 23;
-  String _gender = '女性';
+  int _age = 3;
+  String _gender = '未選択';
 
   // 年齢選択肢の生成
   final List<int> _ageList = List.generate(100, (index) => index + 1);
