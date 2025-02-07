@@ -28,9 +28,9 @@ flutter-gakkai-07/
 └── ...
 ```
 
-## CI/CD
+## 🛠️ CI/CD
 
-## フロントエンド (Flutter)
+### フロントエンド (Flutter)
 
 ```mermaid
 graph TD
@@ -66,7 +66,7 @@ graph TD
     G -->|backend/ の変更| H{変更検出}
     H -->|変更あり| I[Google Cloud 認証]
     I --> J[Dependencies インストール]
-    J --> K[Cloud Run functions for Firebase (2nd Gen) デプロイ]
+    J --> K[Cloud Run functions for Firebase デプロイ]
     K --> L[デプロイ完了]
     B -->|変更なし| M[CI スキップ]
     H -->|変更なし| N[デプロイスキップ]
