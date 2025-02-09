@@ -1,4 +1,13 @@
-# 第 ７ 回 FlutterGakkai セッション用デモアプリ - AI キャラクタージェネレーター
+# 第 ７ 回 FlutterGakkai セッション用デモアプリ
+
+【セッションタイトル】  
+- Flutter × Firebase Genkit で加速する生成 AI アプリ開発
+
+【登壇資料 (Presentation Slides)】
+- 🇯🇵 [日本語版スライド (Japanese Version)](https://speakerdeck.com/coborinai/flutter-x-firebase-genkit-dejia-su-surusheng-cheng-ai-apurikai-fa)
+- 🌍 [English Version Slides](https://speakerdeck.com/coborinai/accelerating-generative-ai-app-development-with-flutter-and-firebase-genkit)  
+
+## デモアプリ概要: AI キャラクタージェネレーター
 
 Flutter と Cloud Run functions for Firebase (2nd Gen), Genkit を使用して AI キャラクターを生成するサンプルアプリケーションです。
 
